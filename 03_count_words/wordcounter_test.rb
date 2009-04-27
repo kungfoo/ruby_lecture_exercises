@@ -19,6 +19,23 @@ TEXT
     
     counter = Wordcounter.new
     counter.create_stats(string)
-    counter.print_stats
+    
+    assert_equal(7, counter.count("code"))
+    assert_equal(6, counter.count("CLUB"))
+    assert_equal(6, counter.count("club"))
+    assert_equal(0, counter.count("ipsum"))
+    assert_equal(2, counter.count("Talk"))
+  end
+  
+  def test_stats_from_file
+    counter = Wordcounter.new
+    File.open("input.txt", "r") do |file|
+      counter.create_stats(file)
+    end
+    
+    assert_equal(10, counter.count("Amet"))
+    assert_equal(7, counter.count("ipsum"))
+    assert_equal(5, counter.count("ante"))
+    assert_equal(0, counter.count("actual"))
   end
 end
