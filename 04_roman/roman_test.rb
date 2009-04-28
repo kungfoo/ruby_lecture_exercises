@@ -21,6 +21,12 @@ class TestRoman < Test::Unit::TestCase
       assert_equal(i, decimal)
     end
   end
+  
+  def test_from_lower_case
+    roman = "xiii"
+    decimal = Integer.from_roman(roman)
+    assert_equal(13, decimal)
+  end
 
   private
   def check_conversion(number, string)
