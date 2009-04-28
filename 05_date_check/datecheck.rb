@@ -3,10 +3,11 @@ class Datecheck
   @@month = /^(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s+/
   @@day = /^\d{2}\s+/
   @@year = /^\d{4}\s+/
-  @@time = /^[0-2][0-4]:[0-5][0-9]:[0-5][0-9]\s*/
+  @@time = /^(2[0-4]|[0|1][0-9]):[0-5][0-9]:[0-5][0-9]\s*/
   @@parts = [@@weekday, @@month, @@day, @@year, @@time]
 
-  def self.valid?(string)
+  def self.valid?(a)
+    string = String.new(a)
     @@parts.each do |r|
       if string =~ r
         string.gsub!(r, "")

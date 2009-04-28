@@ -4,13 +4,26 @@ require "datecheck.rb"
 
 class TestDatecheck < Test::Unit::TestCase
   def setup
-    @days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
+    @weekdays = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
     @months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
   end
   
   def test_valid_formats
     check_valid("Tue Jan 22 2006 22:23:59")
     check_valid("Wed Feb 30 2009 01:01:59")
+    
+    @weekdays.each do |weekday|
+      @months.each do |month|
+        day = "%02d" % (rand(30)+1)
+        year = "%04d" % (rand(3000)+1)
+        hours = "%02d" % rand(24)
+        minutes = "%02d" % rand(59)
+        seconds = "%02d" % rand(59)
+        
+        string = "#{weekday} #{month} #{day} #{year} #{hours}:#{minutes}:#{seconds}"
+        check_valid(string)
+      end
+    end
   end
   
   
