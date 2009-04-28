@@ -25,8 +25,7 @@ class TestDatecheck < Test::Unit::TestCase
       end
     end
   end
-  
-  
+    
   def test_invalid_formats
     check_invalid("Feb Mon 22 2006")
     check_invalid("Mon Dec 30 1990 25:23:23")
