@@ -26,12 +26,3 @@ class Integer
     sum
   end
 end
-
-# check
-for i in (1..3900)
-  r = i.to_roman
-  j = Integer.from_roman(r)
-  if i != j
-    puts "error: #{i} : #{r} - #{j}"
-  end
-end

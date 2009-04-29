@@ -4,7 +4,7 @@ unless ARGV.size == 0
   File.open(filename, "r") do |file|
     file.each_line{ |line| lines << line }
   end
-  puts lines.reverse.join
+  puts lines.reverse
 else
   puts "usage: ruby reverse_lines.rb [filename]\nplease give the filename to reverse"
 end
