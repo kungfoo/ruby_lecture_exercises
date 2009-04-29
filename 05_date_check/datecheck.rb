@@ -7,6 +7,7 @@ class Datecheck
   @@parts = [@@weekday, @@month, @@day, @@year, @@time]
 
   def self.valid?(a)
+    # copy the string, then strip off valid parts from the front until done.
     string = String.new(a)
     @@parts.each do |r|
       if string =~ r
@@ -18,4 +19,4 @@ class Datecheck
 
     return true
   end
-end
+end 

@@ -16,9 +16,9 @@ class TestDatecheck < Test::Unit::TestCase
       @months.each do |month|
         day = "%02d" % (rand(30)+1)
         year = "%04d" % (rand(3000)+1)
-        hours = "%02d" % rand(24)
-        minutes = "%02d" % rand(59)
-        seconds = "%02d" % rand(59)
+        hours = "%02d" % rand(25)
+        minutes = "%02d" % rand(60)
+        seconds = "%02d" % rand(60)
         
         string = "#{weekday} #{month} #{day} #{year} #{hours}:#{minutes}:#{seconds}"
         check_valid(string)
