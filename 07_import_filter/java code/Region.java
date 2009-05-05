@@ -1,5 +1,4 @@
-package ch.hsr.ibis.mser;
-
+package ch.hsr.ibis.mser.MSERDetector.Region;
 
 import ch.hsr.ibis.common.Feature;
 import ch.hsr.ibis.matrix.EllipseOperations;
@@ -25,39 +24,4 @@ public class Region {
 	private PixelForestNode[] pixels;
 	// forest this Region resides in
 	private PixelForest forest;
-
-	
-	/**
-	 * check whether the pixel is surrounded by 4-way neighbours of the same
-	 * region
-	 * 
-	 * @param pixel
-	 * @return
-	 */
-	private boolean isPixelNotSurrounded(int pixel) {
-		int[] neighbours = forest.findNeighbours(pixel);	
-		for(int i = 0; i < neighbours.length; i++){
-			// if one of the neighbours is not in the forest, it can't be surrounded
-			if(neighbours[i] != -1 && pixels[neighbours[i]].parent == -1){
-				return true;
-			}
-			else if(neighbours[i] != -1 && forest.find(pixel) != forest.find(neighbours[i])){
-				return true;
-			}
-			else if(neighbours[i] == -1){
-				// it is an image border pixel
-				return true;
-			}
-		}
-		// if the pixel has passed all tests, it is in fact surrounded
-		// mark it as an inside pixel
-		pixels[pixel].isOutlinePixel = false;
-		return false;
-	}
-
-	@Override
-	public String toString() {
-		return "(" + pixels[parent].x + "," + pixels[parent].y + "):"
-				+ pixels[parent].area;
-	}
 }

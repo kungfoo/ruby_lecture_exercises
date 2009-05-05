@@ -4,8 +4,12 @@ require "import_filter"
 
 class Array
   # same elements as far as <=> goes. no duplicates allowed.
-  def contains_same_elements?(array)
-    return self.sort == array.sort
+  def same_elements?(array)
+    if self.size != array.size
+      return false
+    else
+      return self.sort == array.sort
+    end
   end
 end
 
@@ -20,7 +24,7 @@ class TestImportFilter < Test::Unit::TestCase
   def test_directory
     filter = ImportFilter.new("java code")
     imports = filter.imports
-    assert_equal(true, imports.contains_same_elements?(@unique_imports), "imports should contain \n#{@unique_imports.inspect}\nbut was \n#{imports.inspect}")
+    assert_equal(true, imports.same_elements?(@unique_imports), "imports should contain \n#{@unique_imports.inspect}\nbut was \n#{imports.inspect}")
   end
 
   def test_single_file
@@ -29,8 +33,8 @@ class TestImportFilter < Test::Unit::TestCase
   end
 
   def test_array_contains_same_elements
-    assert_equal(true, [1,2,3].contains_same_elements?([3,2,1]))
-    assert_equal(false, [1,2,3].contains_same_elements?([1,2]))
+    assert_equal(true, [1,2,3].same_elements?([3,2,1]))
+    assert_equal(false, [1,2,3].same_elements?([1,2]))
   end
 
   def test_each_file
