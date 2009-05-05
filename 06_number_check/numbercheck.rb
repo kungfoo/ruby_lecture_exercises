@@ -1,12 +1,9 @@
 class Numbercheck
   
-  SIGN = /^[-|+]{0,1}/
-  NORMAL = /^[0-9]+.[0.9]*/
-  SCIENTIFIC = //
-  FORMAT = (SIGN & NORMAL) | (SIGN & SCIENTIFIC) 
+  NORMAL = /^((\-|\+){0,1}[0-9]*\.[0-9]+)|^((\-|\+){0,1}[0-9]+\.[0-9]*)$/
+  SCIENTIFIC = /^(\-|\+){0,1}[0-9]*\.[0-9]+e(\+|\-)[0-9]+$/
   
   def self.valid?(string)
-    copy = String.new(string)
-    
+    (string =~ NORMAL) != nil or (string =~ SCIENTIFIC) != nil
   end
 end
