@@ -10,6 +10,10 @@ class ImportFilter
   end
   
   def imports
-    
+    []
+  end
+  
+  def each_file
+    @files.each { |f| yield f }
   end
 end
