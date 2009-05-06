@@ -6,11 +6,6 @@ class ImportFilter
     @files = Dir.chdir(@directory) { Dir.glob("*.java") }
   end
 
-  def self.from_file(file)
-    @directory = nil
-    @files = [file]
-  end
-
   def imports
     imports = []
     Dir.chdir(@directory) do
@@ -20,11 +15,7 @@ class ImportFilter
     end
     return imports.uniq
   end
-
-  def each_file
-    @files.each { |f| yield f }
-  end
-
+  
   private
   def scan_file_for_imports(file, imports)
     File.open(file, "r") do |file|

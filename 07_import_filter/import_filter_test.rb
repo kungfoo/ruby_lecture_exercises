@@ -27,20 +27,8 @@ class TestImportFilter < Test::Unit::TestCase
     assert_equal(true, imports.same_elements?(@unique_imports), "imports should contain \n#{@unique_imports.inspect}\nbut was \n#{imports.inspect}")
   end
 
-  def test_single_file
-    file = "java code/Bar.java"
-    filter = ImportFilter.from_file(file)
-  end
-
   def test_array_contains_same_elements
     assert_equal(true, [1,2,3].same_elements?([3,2,1]))
     assert_equal(false, [1,2,3].same_elements?([1,2]))
-  end
-
-  def test_each_file
-    filter = ImportFilter.new("java code")
-    filter.each_file do |file|
-
-    end
   end
 end
