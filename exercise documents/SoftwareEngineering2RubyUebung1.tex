@@ -1,0 +1,285 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%		Kommentar
+%		Ein nettes old school template.......
+%		last modified: 27/03/07
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[a4paper,11pt,oneside]{scrbook}
+\include{dude-template}
+
+\begin{document}
+\renewcommand{\theequation}{\thesection.\arabic}
+\addtokomafont{caption}{\small}
+\setkomafont{captionlabel}{\sffamily\bfseries}
+\numberwithin{equation}{section}
+\pagenumbering{Roman}
+\setcapindent*{1em}
+
+\fontspec[Numbers={OldStyle}, Ligatures={Common}]{Adobe Garamond Pro}
+
+\chapter{Einführung} % (fold)
+\label{cha:einführung}
+
+\section{Grundlegendes} % (fold)
+\label{sec:Grundlegendes}
+Die Aufgaben sind ungefähr nach Schwierigkeitsgrad geordnet, Sie können sie aber in beliebiger Reihenfolge lösen. Die Aufgaben sollten gut für die 2x2 Übungsstunden reichen.
+
+Am Besten schreiben Sie laufend Unit-Tests zu den Aufgaben. Hier ein kurzer Auszug wie das geht:
+
+\begin{lstlisting}
+require "test/unit"
+require "animal.rb"
+
+class TestAnimal < Test::Unit::TestCase
+  def test_equality
+    a = Animal.new 12, "a"
+    b = Animal.new 10, "b"
+    
+    assert_equal(-1, a<=>b)
+    
+    a.name = "b"
+    assert_equal(1, a<=>b)
+    
+    b.age = 12
+    assert_equal(0, a<=>b)
+    end
+end
+\end{lstlisting}
+
+Ausführen können die den Unit-Test einfach wie jedes andere Ruby-Programm mit \texttt{ruby [filename]}. Sie bekommen dann automatisch eine Auswertung über die Tests und wie viele Assertions ausgeführt wurden und auch wo sie fehlgeschlagen sind.
+
+
+% section Grundlegendes (end)
+
+
+\section{Download...} % (fold)
+\label{sec:download_}
+Ruby gibts hier: \url{http://www.ruby-lang.org/}. Laden Sie falls sie die Wahl haben einen 1.8.x Release herunter.
+% section download_ (end)
+
+\section{Ruby starten} % (fold)
+\label{sec:ruby_starten}
+Starten Sie \texttt{irb} oder \texttt{ruby} und spielen sie ein wenig damit. Geben Sie “Hello World” aus. Iterieren Sie über ein Array, einen Hash. Schreiben sie einen Stack. Seien Sie einfach etwas kreativ :)
+
+Sie können sich auch diverse Beispiele aus den Lecture Notes ansehen/in \texttt{irb} eingeben und versuchen sie abzuändern/verstehen.
+
+Versuchen Sie vor dem Lösen der Übungsaufgaben grundsätzlich erst einmal die Syntax und einige der speziellen Konstrukte zu verstehen, die Sie vielleicht noch aus keiner Programmiersprache kennen.
+% section ruby_starten (end)
+% chapter einführung (end)
+
+
+
+
+
+
+
+
+\chapter{Aufgaben Ruby} % (fold)
+\label{cha:Aufgaben Ruby}
+
+
+\section{The answer to life, the universe and everything} % (fold)
+\label{sec:the_answer_to_life_the_universe_and_everything}
+Schreiben Sie ein Programm, dass einen \texttt{int} \emph{n} als Parameter erhält oder von stdin liest und dann genau \emph{n}-mal “42” je auf einer neuen Zeile ausgibt.
+% section the_answer_to_life_the_universe_and_everything (end)
+
+
+
+\section{Zeilen drehen} % (fold)
+\label{sec:Zeilen drehen}
+Schreiben Sie ein Programm welches ein per Command-Line-Argument angegebenes File einliest und die Zeilen in umgekehrter Reihenfolge wieder ausgibt.
+Sollte kein Argument angegeben werden, so lesen Sie von stdin, bis EOF.
+
+% section Zeilen drehen (end)
+
+\section{Wörter zählen} % (fold)
+\label{sec:Wörter zählen}
+Schreiben Sie ein Ruby-Programm welches die Wörter in einem File/String/stdin zählt und eine schöne Zusammenfassung zurückliefert und/oder ausdruckt.
+
+Lösen Sie folgende Punkte iterativ und schreiben Sie dazu jeweils einen Unit-Test für ihren Code:
+
+\begin{itemize}
+  \item Führen Sie die Statistik zuerst für einen String durch und geben Sie eine Datenstruktur zurück, mit der der User der Klasse gut weiter arbeiten kann (z.B. einen Hash).
+  \item Zählen Sie nur ''echte'' Wörter. Benutzen Sie unter Umständen einen Regulären Ausdruck um diese zu erkennen.
+  \item Schreiben sie den Code so, dass sie ihn sowohl für Strings, als auch für Files als auch für stdin verwenden können.
+  \item Sortieren Sie die Wörter nach Häufigkeit und geben sie nur die \texttt{n} häufigsten zurück.
+  \item Schreiben Sie ein Kommandozeileninterface zu ihrem Code (separates Ruby-Programm), der \texttt{-n} und \texttt{+n} und einen Filenamen als Switches/Parameter akzeptiert.
+  \begin{itemize}
+    \item \texttt{-n}: Die \emph{n} häufigsten Wörter werden ausgegeben.
+    \item \texttt{+n}: Die \emph{n} seltensten Wörter.
+  \end{itemize}
+  
+\end{itemize}
+
+
+% section Wörter zählen (end)
+
+
+\section{Römische Zahlen} % (fold)
+\label{sec:römische_zahlen}
+Da in Ruby die Basisklassen auch einfach erweitert werden können, ist es für uns möglich Integer als Römische Zahlen darzustellen. Und zwar einfach so, dass die römische Schreibweise einfach eine Präsentationsform der Integer ist.
+
+Sehen Sie sich diesen Artikel an: \url{http://de.wikipedia.org/wiki/R%C3%B6mische_Zahlen}.
+
+Implementieren sie das Umrechnen von \texttt{Integer} in die römische Schreibweise als Erweiterung der Klasse \texttt{Integer}! Beachten sie dabei die Subtraktionsregel, also dass für 4 zum Beispiel IV und für 900 CM geschrieben wird.
+
+\begin{lstlisting}
+class Integer
+  def to_roman
+    # umrechnung nach roman
+  end
+
+  def Integer.from_roman(roman)
+    # zurück rechnen
+  end
+end
+\end{lstlisting}
+
+Tipps:
+\begin{itemize}
+	\item Verwenden Sie für die Werte der verschiedenen Zeichen ein [[...]].
+	\item Schreiben Sie einen Unit-Test!! Sie können zum Beispiel sicherstellen, dass die Zahlen in (1..5000) korrekt hin/zurück konvertiert werden. Einige Spezialfälle sollten Sie vielleicht noch von Hand umrechnen und testen...
+\end{itemize}
+
+% section römische_zahlen (end)
+
+
+
+
+
+
+
+% chapter Aufgaben Ruby (end)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\chapter{Aufgaben zu Regular Expressions} % (fold)
+\label{cha:aufgaben_zu_regular_expressions}
+
+\section{Zeitformat} % (fold)
+\label{sec:zeitformat}
+Schreiben sie eine Klasse in Ruby die mittels einer Regular Expression folgendes Zeitformat prüft:
+
+\begin{lstlisting}
+Mon May 22 2006 22:22:01
+\end{lstlisting}
+
+Achten sie dabei nur auf Syntax, nicht auf die Semantik. So ist zum Beispiel der 31. Februar ein erlaubtes Datum. Allerdings sollte eine Uhrzeit von 30:99:60 nicht möglich sein.
+Prüfen sie ihre Klasse indem sie einen Unit-Test schreiben!
+% section zeitformat (end)
+
+\section{Zahlenformat} % (fold)
+\label{sec:zahlenformat}
+Schreiben sie eine Klasse die mittels RE korrekt geschriebene Fliesskommazahlen für C++ oder C-Code erkennt.
+
+Gültig sind zum Beispiel:
+\begin{lstlisting}
+1.0
+0.
+7e-1
+1.88e+3
+.3123e1
+0.1
+\end{lstlisting}
+
+Nicht gültig:
+\begin{lstlisting}
+e1
+1e+-1
+1e
+\end{lstlisting}
+
+Schaffen Sie es auch, die Klasse so zu schreiben, dass keine Integer-Zahlen erkannt werden? Also keine Zahlen der Form:
+\begin{lstlisting}
+0
+42
+\end{lstlisting}
+
+Prüfen Sie auch diesen Code mittels einem Unit-Test!
+% section zahlenformat (end)
+
+
+\section{Anhängigkeiten filtern} % (fold)
+\label{sec:anhängigkeiten_filtern}
+Schreiben Sie ein Programm, das aus einem Java-File alle \texttt{import} Statements erkennt und eine Liste der verwendeten Packages und Klassen ausgibt.
+
+Sie können diese Aufgabe auh für C/C++ lösen.
+
+Können sie das Programm so erweitern, dass es die Information für ein ganzes Verzeichnis/Projekt sinnvoll augibt?
+% section anhängigkeiten_filtern (end)
+
+
+\section{RE statt Code} % (fold)
+\label{sec:re_statt_code}
+Analysieren Sie folgenden ruby code und refactorisieren ihn, damit er reguläre Ausdrücke und die gsub Methode verwendet:
+
+\begin{lstlisting}
+File.open(ARGV[0]) do |file|
+  s = ""
+  file.each_line {|l| s = s + l.delete("\n") + " " } 
+end
+\end{lstlisting}
+
+\begin{itemize}
+	\item Was macht das Programm?
+	\item Wie kann man es kürzer und einfacher formulieren?
+\end{itemize}
+
+% section re_statt_code (end)
+
+
+\section{Zeit-Datum-Format parsen} % (fold)
+\label{sec:zeit_datum_format_parsen}
+Schreiben sie einen “richtigen” Parser mit Hilfe von RE, der wie in Aufgabe \ref{sec:zeitformat} das Zeitformat erkennt, zerlegt und prüft ob die Zeit korrekt ist. Um es nicht zu kompliziert zu machen, erkennen sie Zeiten in amerikanischer Schreibweise mit Stunden und Minuten.
+
+\begin{lstlisting}
+9:20am
+12:10 PM
+\end{lstlisting}
+
+\begin{itemize}
+	\item ermöglichen Sie die Angabe von am/pm in Gross und Kleinbuchstaben.
+	\item Zusatz: Konvertieren sie ins 24h-Format (intern)
+\end{itemize}
+
+Üverprüfen Sie ihren Code mittels Unit-Tests!!
+% section zeit_datum_format_parsen (end)
+
+\section{Javadoc entfernen (schwieriger)} % (fold)
+\label{sec:javadoc_entfernen}
+Schreiben Sie ein Ruby Programm, das aus einem Javafile alle Javadoc-Kommentare entfernt. Wenn das geklappt hat, auch alle Kommentare die keinen Text enthalten.
+\begin{itemize}
+	\item Zusatz: können sie auch nur automatisch generierte Kommentare entfernen und die “richtigen” stehen lassen?
+	\item Achten Sie auf die Greedyness der REs.
+	\item Lesen sie den gesamten Fileinhalt in einen String.
+	\item Versuchen sie auch hierzu einen Unit-Test zu schreiben. Er sollte mehrere *.java-Files in einem Verzeichnis beinhalten, die danach an ihren Code “verfüttert” werden. Überprüfen Sie den Output ihres Codes mittels einem Vergleich zu Code, den sie von Hand von den gewünschten Kommentaren gesäubert haben.
+\end{itemize}
+% section javadoc_entfernen (end)
+
+\section{Zusatz zum Abhängigkeitsfilter (schwierig)} % (fold)
+\label{sec:Zusatz zum Abhängigkeitsfilter}
+Schreiben Sie ihren Filter so um, dass er rekursiv alle inkludierten Files auch analysiert. Die macht natürlich besonders Spass für C/C++.
+Können Sie zyklische Abhängigkeiten erkennen? Bringen Sie ihren Filter dazu das zu tun.
+
+% section Zusatz zum Abhängigkeitsfilter (end)
+
+% chapter aufgaben_zu_regular_expressions (end)
+
+
+
+\end{document}

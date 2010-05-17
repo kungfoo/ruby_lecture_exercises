@@ -1,0 +1,128 @@
+\usepackage{eurosym}
+\usepackage[german]{babel}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[automark]{scrpage2}	%Kopfzeile Autoinhalt (Kapitel)
+\usepackage{graphics}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{lscape}
+\usepackage{hhline}
+\usepackage{booktabs}
+\usepackage{multirow}
+% \usepackage[T1]{fontenc}
+% \usepackage[pdftex]{hyperref}
+\usepackage{makeidx}
+\selectlanguage{german}
+\setlength{\parindent}{0pt}  % setzt sie Einrückung nach einem Umbruch zurück
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%		Sachregister-Erstellung
+%		Begriffe werden mit Befehl \index{} aufgenommen
+% 		Index erstellen in Konsole makeindex -g -s style.ist Vorlage.idx 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\makeindex
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%		ETH-Schrift einführen
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+\usepackage[standard-baselineskips]{cmbright} % Mathematikschrift die in etwa ETH-Light entspr.
+\renewcommand{\sectfont}{\bfseries}
+
+%\renewcommand{\familydefault}{let} 
+%\renewcommand{\seriesdefault}{let}
+%\renewcommand{\shapedefault}{let}
+%\renewcommand{\sfdefault}{let}
+\renewcommand{\rmdefault}{let}
+
+
+% \DeclareFixedFont{\x}{T1}{let}{m}{n}{10}
+% \DeclareFixedFont{\xb}{T1}{let}{m}{n}{10}
+% \newfont{\xiiiv}{letr8t at 8.0pt}
+% \newfont{\xiiivb}{letb8t at 8.0pt}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+% Schriftengefrickel
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{fontspec}
+\usepackage{sectsty}
+
+\partfont{\font \x="DINNeuzeitGroteskStd-Light" at 40pt\x}
+\chapterfont{\font \x="DINNeuzeitGroteskStd-Light" at 32pt\x}
+\sectionfont{\font \x="DINNeuzeitGroteskStd-Light" at 16pt\x}
+\subsectionfont{\font \x="DINNeuzeitGroteskStd-Light" at 14pt\x}
+\subsubsectionfont{\font \x="DINNeuzeitGroteskStd-Light" at 14pt\x}
+\paragraphfont{\font \x="DINNeuzeitGroteskStd-Light" at 14pt\x}
+\newfontface\swashed[Contextuals=Swash, Ligatures=Common]{Adobe Garamond Pro Italic}
+\newfontface\foo[Numbers={OldStyle},Contextuals=Swash, Ligatures=Common]{Adobe Garamond Pro}
+\newfontface\foofat[Numbers={OldStyle},Contextuals=Swash, Ligatures=Common]{Adobe Garamond Pro Bold}
+
+
+\usepackage[a4paper,left=4.0cm, right=4.0cm,top=3.0cm, bottom=3.0cm]{geometry}
+	
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%		eigenen Stil definieren
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\pagestyle{scrheadings}
+\renewcommand*{\chapterpagestyle}{scrheadings} 
+\clearscrheadfoot 
+\ihead{\textsf{\headmark}} 
+\ohead{\pagemark}
+\setheadsepline{.4pt}
+\setfootsepline{.4pt}
+\ifoot{}
+\ofoot{\footnotesize{\textsc{Hsr, Silvio Heuberger}}}
+
+
+% frickelabst�nde
+
+% abst�nde und sooooo
+\setlength{\columnsep}{10mm}
+\setlength{\parskip}{2.5mm}
+
+%two column float page must be 90% full
+\renewcommand\dblfloatpagefraction{.90}
+%two column top float can cover up to 80% of page
+\renewcommand\dbltopfraction{.80}
+%float page must be 90% full
+\renewcommand\floatpagefraction{.90}
+%top float can cover up to 80% of page
+\renewcommand\topfraction{.80}
+%bottom float can cover up to 80% of page
+\renewcommand\bottomfraction{.80}
+%at least 10% of a normal page must contain text
+\renewcommand\textfraction{.1}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+% listings for everyone
+
+\definecolor{defgray}{cmyk}{0.3,0.05,0,0.43}
+\usepackage[plainpages={false}, bookmarks, pdfstartview={FitV}, colorlinks, linkcolor=defgray]{hyperref}
+
+
+\usepackage{listings}
+\lstset{% general command to set parameter(s)
+basicstyle=\ttfamily\small, % print whole listing small
+%basicstyle=\small,
+commentstyle=\color{defgray}, % comments
+stringstyle=\ttfamily, % typewriter type for strings
+showstringspaces=false,
+keywordstyle=\bfseries\color{blue},
+numbers=left,
+numberstyle=\color{defgray}\tiny,
+frame=single,
+%frame=shadowbox,
+%frameround=tttt,
+rulesepcolor=\color{defgray},
+language={ruby}
+} % no special string spaces
+
+
+% make monospace font the same size (optocally) as Arno Pro
+\setmonofont[Scale=0.9]{ITC American Typewriter Std Condensed}
+\defaultfontfeatures{Scale=MatchLowercase,Mapping=tex-text}
