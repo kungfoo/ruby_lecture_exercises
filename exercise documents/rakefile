@@ -1,0 +1,21 @@
+
+@@build_dir = "build"
+@@main_file = "RubyCodeDriven.tex"
+
+task :default => :build
+
+desc "build the pdf of the document"
+task :build => :prepare do
+  2.times do
+    sh "xelatex --output-directory=#{@@build_dir} #{@@main_file}"
+  end
+end
+
+desc "clean up all the intermediate files"
+task :clean do
+  FileUtils.rm_r @@build_dir
+end
+
+task :prepare do
+  FileUtils.mkdir @@build_dir unless File.exists? @@build_dir
+end
