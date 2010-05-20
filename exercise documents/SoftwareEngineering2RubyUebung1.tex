@@ -57,16 +57,16 @@ Ausführen können die den Unit-Test einfach wie jedes andere Ruby-Programm mit 
 
 \section{Download...} % (fold)
 \label{sec:download_}
-Ruby gibts hier: \url{http://www.ruby-lang.org/}. Laden Sie falls sie die Wahl haben einen 1.8.x Release herunter.
+Ruby gibts hier: \url{http://www.ruby-lang.org/}. Laden Sie falls sie die Wahl haben einen 1.8.x Release herunter. Wenn Sie wollen können Sie auch JRuby verwenden, allerdings werden ihre Programme dann etwas langsamer starten, da zuerst eine JVM gestartet werden muss.
 % section download_ (end)
 
 \section{Ruby starten} % (fold)
 \label{sec:ruby_starten}
-Starten Sie \texttt{irb} oder \texttt{ruby} und spielen sie ein wenig damit. Geben Sie “Hello World” aus. Iterieren Sie über ein Array, einen Hash. Schreiben sie einen Stack. Seien Sie einfach etwas kreativ :)
+Starten Sie \texttt{irb} oder \texttt{ruby} und spielen sie ein wenig damit. Geben Sie “Hello World” aus. Iterieren Sie über ein Array, einen Hash. Schreiben sie einen Stack. Seien Sie einfach etwas kreativ und bekommen Sie einen “Feel” für die Sprache. :)
 
 Sie können sich auch diverse Beispiele aus den Lecture Notes ansehen/in \texttt{irb} eingeben und versuchen sie abzuändern/verstehen.
 
-Versuchen Sie vor dem Lösen der Übungsaufgaben grundsätzlich erst einmal die Syntax und einige der speziellen Konstrukte zu verstehen, die Sie vielleicht noch aus keiner Programmiersprache kennen.
+Versuchen Sie vor dem Lösen der Übungsaufgaben grundsätzlich erst einmal die Syntax und einige der speziellen Konstrukte zu verstehen, die Sie vielleicht noch aus keiner anderen Programmiersprache kennen.
 % section ruby_starten (end)
 % chapter einführung (end)
 
@@ -102,14 +102,14 @@ Schreiben Sie ein Ruby-Programm welches die Wörter in einem File/String/stdin z
 Lösen Sie folgende Punkte iterativ und schreiben Sie dazu jeweils einen Unit-Test für ihren Code:
 
 \begin{itemize}
-  \item Führen Sie die Statistik zuerst für einen String durch und geben Sie eine Datenstruktur zurück, mit der der User der Klasse gut weiter arbeiten kann (z.B. einen Hash).
+  \item Führen Sie die Statistik zuerst für einen String durch und geben Sie eine Datenstruktur zurück, mit der ein User der Klasse gut weiter arbeiten kann (z.B. einen Hash).
   \item Zählen Sie nur ''echte'' Wörter. Benutzen Sie unter Umständen einen Regulären Ausdruck um diese zu erkennen.
   \item Schreiben sie den Code so, dass sie ihn sowohl für Strings, als auch für Files als auch für stdin verwenden können.
   \item Sortieren Sie die Wörter nach Häufigkeit und geben sie nur die \texttt{n} häufigsten zurück.
   \item Schreiben Sie ein Kommandozeileninterface zu ihrem Code (separates Ruby-Programm), der \texttt{-n} und \texttt{+n} und einen Filenamen als Switches/Parameter akzeptiert.
   \begin{itemize}
-    \item \texttt{-n}: Die \emph{n} häufigsten Wörter werden ausgegeben.
-    \item \texttt{+n}: Die \emph{n} seltensten Wörter.
+    \item \texttt{-n}: Die $n$ häufigsten Wörter werden ausgegeben.
+    \item \texttt{+n}: Die $n$ seltensten Wörter.
   \end{itemize}
   
 \end{itemize}
@@ -214,11 +214,11 @@ Prüfen Sie auch diesen Code mittels einem Unit-Test!
 % section zahlenformat (end)
 
 
-\section{Anhängigkeiten filtern} % (fold)
+\section{Abhängigkeiten filtern} % (fold)
 \label{sec:anhängigkeiten_filtern}
 Schreiben Sie ein Programm, das aus einem Java-File alle \texttt{import} Statements erkennt und eine Liste der verwendeten Packages und Klassen ausgibt.
 
-Sie können diese Aufgabe auh für C/C++ lösen.
+Sie können diese Aufgabe auch für C/C++ lösen.
 
 Können sie das Programm so erweitern, dass es die Information für ein ganzes Verzeichnis/Projekt sinnvoll augibt?
 % section anhängigkeiten_filtern (end)
@@ -226,7 +226,7 @@ Können sie das Programm so erweitern, dass es die Information für ein ganzes V
 
 \section{RE statt Code} % (fold)
 \label{sec:re_statt_code}
-Analysieren Sie folgenden ruby code und refactorisieren ihn, damit er reguläre Ausdrücke und die gsub Methode verwendet:
+Analysieren Sie folgenden ruby code und refaktorisieren ihn, damit er reguläre Ausdrücke und die \texttt{String\#gsub} Methode verwendet:
 
 \begin{lstlisting}
 File.open(ARGV[0]) do |file|
@@ -257,7 +257,7 @@ Schreiben sie einen “richtigen” Parser mit Hilfe von RE, der wie in Aufgabe 
 	\item Zusatz: Konvertieren sie ins 24h-Format (intern)
 \end{itemize}
 
-Üverprüfen Sie ihren Code mittels Unit-Tests!!
+Überprüfen Sie ihren Code mittels Unit-Tests!!
 % section zeit_datum_format_parsen (end)
 
 \section{Javadoc entfernen (schwieriger)} % (fold)

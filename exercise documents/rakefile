@@ -1,6 +1,6 @@
 
 @@build_dir = "build"
-@@main_file = "RubyCodeDriven.tex"
+@@main_file = "SoftwareEngineering2RubyUebung1.tex"
 
 task :default => :build
 
